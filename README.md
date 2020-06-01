@@ -5,6 +5,7 @@ This is small test in python for new jow in SQReam company
 The code was build with python 3.8
 
 List of Files
+-------------
 buildPostgreDB.py - Build new databse 'sqltasks'
 config.py         - Read configuration ini file
 sqlTask1.py       - First Task in Sql
@@ -13,6 +14,7 @@ pythonTask1.py    - First Task in python
 pythonTask2.py    - Second Task in python
 
 Data Files:
+-----------
 newdatabase.ini - for configuration first time to PostGreSql for building the databse
 database.ini    - for configuration to PostGreSql
 config.json     - Json file for task 1 in python
