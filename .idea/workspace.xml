@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0183743c-e2fa-4122-8932-097daf735333" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pythonTask2.py" beforeDir="false" afterPath="$PROJECT_DIR$/pythonTask2.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -223,7 +222,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/pythonTask2.py</url>
-          <line>23</line>
+          <line>18</line>
           <option name="timeStamp" value="10" />
         </line-breakpoint>
       </breakpoints>
