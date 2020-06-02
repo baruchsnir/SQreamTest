@@ -12,8 +12,15 @@ def get_delta_from_date(end_time, start_time):
     return milisecond
 def collect_status_from_log():
     try:
+        # r’id: (?P<id>\d+)’
+        # (\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d+)\|\s*on thread\[\w* \w+\]\|\s*IP\[(\d+\.\d+\d+\.\d+\.\d+\:\d+)\]\s*\|\s*(\w+)\|\s*(\d+.\d+\d+.\d+.\d+)\|\s*(\w+)\|\s\(stmt : (\d+)\s*\)\s\|\s*(\w+)\|\s*(.*)
+        rg = '''
+        (\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d+)\|\s*on thread\[(\w*\s*\w+)\]\s*\|\s*IP\[(\d+\.\d+\d+\.\d+\.\d+\:\d+)\]\s*\|\s*(\w+)\|\s*(\d+.\d+\d+.\d+.\d+)\|\s*(\w+)\s*\|\s*\(stmt : (\d+)\s*\)\s*\|\s*(\w+)\|\s*(.*)
+        '''
+
         with open('logfile.log','r') as file:
             lines = file.readlines()
+        dd = re.findall(rg, lines)
         last_statement = ''
         data = {}
         statement = []
@@ -132,7 +139,7 @@ def get_slowest_successful_statement(data):
             statment = s
     print('------------------------------------------')
     print('Task 2 Get the Slowest Statement :')
-    print('statement {} was the slowest - {} Milliseconds'.format(s,total))
+    print('statement {} was the slowest - {} Milliseconds'.format(statment,total))
 
 
 def count_statements_by_user(data):
