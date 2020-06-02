@@ -5,11 +5,11 @@ import json
 from datetime import datetime
 
 def get_delta_from_date(end_time, start_time):
-    format = '%Y-%m-%d %H:%M:%S'  # The format 2018-11-06 16:52:01
+    format = '%Y-%m-%d %H:%M:%S.%f'  # The format 2018-11-06 16:52:14.917
     datetime_end = datetime.strptime(end_time, format)
     datetime_start = datetime.strptime(start_time, format)
-    second = (datetime_end - datetime_start).seconds
-    return second
+    milisecond = (datetime_end - datetime_start).microseconds/1000
+    return milisecond
 def collect_status_from_log():
     try:
         with open('logfile.log','r') as file:
@@ -50,11 +50,13 @@ def collect_status_from_log():
             # Get Start Time
             if start_time == '':
                 if status.__contains__('Start Time'):
-                    start_time = re.findall('Start Time - (\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})',status)[0]
+                    # start_time = re.findall('Start Time - (\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})',status)[0]
+                    start_time = lind_data[0]
             # Get End Time and calculate the total time for this statement
             if end_time == '':
                 if status.__contains__('End Time'):
-                    end_time = re.findall('End Time - (\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})',status)[0]
+                    # end_time = re.findall('End Time - (\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})',status)[0]
+                    end_time = lind_data[0]
                     total_time = get_delta_from_date(end_time,start_time)
             # Get The Pass/Fail data
             if pass_statement == '':
@@ -130,7 +132,7 @@ def get_slowest_successful_statement(data):
             statment = s
     print('------------------------------------------')
     print('Task 2 Get the Slowest Statement :')
-    print('statement {} was the slowest - {} Seconds'.format(s,total))
+    print('statement {} was the slowest - {} Milliseconds'.format(s,total))
 
 
 def count_statements_by_user(data):
