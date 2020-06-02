@@ -20,7 +20,7 @@ def collect_status_from_log():
 
         with open('logfile.log','r') as file:
             lines = file.readlines()
-        dd = re.findall(rg, lines)
+
         last_statement = ''
         data = {}
         statement = []
